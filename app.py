@@ -898,6 +898,18 @@ def main():
             else:
                 st.error("APIキーを入力してください。")
 
+        # サイドバーの一番下に終了ボタンを追加
+        st.markdown("---")  # Add a separator line
+        if st.button("終了", type="primary"):
+            st.session_state.step = 0
+            st.session_state["messages"] = []
+            st.session_state["selected_model"] = None
+            st.session_state["api_keys"] = {
+                "openai": "",
+                "deepseek": ""
+            }
+            st.rerun()
+
     # メインコンテンツ
     if st.session_state.step == 0:
         st.info("左側のサイドバーからAIモデルを選択し、APIキーを入力してください。")
